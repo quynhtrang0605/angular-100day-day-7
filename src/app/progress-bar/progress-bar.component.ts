@@ -30,7 +30,23 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   ]
 })
 export class ProgressBarComponent implements OnInit, OnChanges{
-  @Input() progress = 50;
+  @Input() set progress(val: number) {
+    // validation for validation
+   if (typeof val !== "number") {
+     const progress = Number(val);
+     if (Number.isNaN(progress)) {
+       this._progress = 0;
+     } else {
+       this._progress = progress;
+     }
+    }
+     this._progress;
+   }
+  private _progress = 50;
+  get progress(){
+    return this._progress;
+  }
+
   @Input()  backgroundColor = '#ccc';
   @Input()  progressColor ='tomato';
 
@@ -41,11 +57,7 @@ export class ProgressBarComponent implements OnInit, OnChanges{
   ngOnInit() {}
 
   ngOnChanges(change: SimpleChanges) {
-    console.log('changes',{
-      progress: this.progress, 
-      backgroundColor: this.backgroundColor, 
-      progressColor: this.progressColor
-    });
+    
   }
 
 }
