@@ -1,4 +1,4 @@
-<hello name="{{ name }}"></hello>
+<!-- <hello name="{{ name }}"></hello>
 <p>
   Start editing to see some magic happen :)
 </p>
@@ -8,4 +8,17 @@
 
 <progress-bar></progress-bar>
 <br>
-<progress-bar [progress]="currentProgress" [progressColor]="'blue'"></progress-bar>
+<progress-bar [progress]="currentProgress" [progressColor]="'blue'"></progress-bar> -->
+
+<h1>
+  Angular sample project for Angular 100 Days of Code
+</h1>
+<h2>
+  Day 7 Component Interaction - Pass data from parent to child with input binding
+</h2>
+
+<app-progress-bar
+  [progress]="35"
+  [backgroundColor]="'#9e9e9e'"
+  [progressColor]="'#2e8b57'"
+></app-progress-bar>
