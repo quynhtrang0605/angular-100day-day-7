@@ -35,41 +35,38 @@ import {
     `
   ]
 })
-export class ProgressBarComponent implements OnInit /*, OnChanges */ {
-  @Input() backgroundColor: string;
-  @Input() progressColor: string;
-  private $progress = 0;
-  @Input()
-  get progress(): number {
-    return this.$progress;
-  }
-  set progress(value: number) {
-    if (typeof value !== "number") {
-      const progress = Number(value);
+export class ProgressBarComponent implements OnInit , OnChanges {
+  @Input() set progress(val: number) {
+    //validation for validation
+    if (typeof val !== "number") {
+      const progress = Number(val);
       if (Number.isNaN(progress)) {
-        this.$progress = 0;
+        this._progress = 0;
       } else {
-        this.$progress = progress;
+        this._progress = progress;
       }
     } else {
-      this.$progress = value;
+      this._progress = val;
     }
+  };
+  private _progress = 50;
+  get progress(){
+    return this._progress;
   }
 
-  constructor() {}
+  @Input() progressColor = '#2e8b57';
+  @Input() backgroundColor = '#9e9e9e';
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if ('progress' in changes) {
-  //     if (typeof changes['progress'].currentValue !== 'number') {
-  //       const progress = Number(changes['progress'].currentValue);
-  //       if (Number.isNaN(progress)) {
-  //         this.progress = 0;
-  //       } else {
-  //         this.progress = progress;
-  //       }
-  //     }
-  //   }
-  // }
+  constructor() {
+    
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+  }
 }
+

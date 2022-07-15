@@ -1,12 +1,15 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
+export class AppComponent {
+  title = 'angular100day';
+  currentProgress = 70;
+  Increase(){
+    this.currentProgress = this.currentProgress + 1;
+  }
 
-  currentProgress = 65;
 }
